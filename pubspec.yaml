@@ -1,0 +1,105 @@
+name: bloc_ftu
+description: Bloc FirstTimeUse
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  flutter_native_splash: ^2.3.10
+
+  flutter_svg: ^2.0.10+1
+
+  get_it: ^7.6.7
+
+  equatable: ^2.0.5
+
+  intl: ^0.18.1
+
+  json_annotation: ^4.8.1
+
+  hive_flutter: ^1.1.0
+
+  auto_route: ^7.8.4
+
+  geolocator: ^11.0.0
+  geocoding: ^3.0.0
+
+  flutter_slidable: ^3.0.1
+
+  lottie: ^3.1.0
+
+  flutter_bloc: ^8.1.5
+  dio: ^5.4.3+1
+  bloc_concurrency: ^0.2.5
+  stream_transform: ^2.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+  flutter_launcher_icons: "^0.13.1"
+
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.8
+
+  hive_generator: ^2.0.1
+
+  auto_route_generator: ^7.3.2
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/svg/
+    - assets/lottie_animation/
+
+  fonts:
+
+    - family: SF Pro Display
+      fonts:
+        - asset: assets/fonts/sfProDisplay/thin.otf
+          weight: 100
+        - asset: assets/fonts/sfProDisplay/regular.otf
+          weight: 400
+        - asset: assets/fonts/sfProDisplay/semiBold.otf
+          weight: 600
+        - asset: assets/fonts/sfProDisplay/bold.otf
+          weight: 700
+
+    - family: SF Pro Text
+      fonts:
+        - asset: assets/fonts/sfProText/regular.ttf
+          weight: 400
+        - asset: assets/fonts/sfProText/semiBold.ttf
+          weight: 600
+        - asset: assets/fonts/sfProText/bold.ttf
+          weight: 700
+
+    - family: RobotoMono
+      fonts:
+        - asset: assets/fonts/robotoMono/regular.ttf
+        - asset: assets/fonts/robotoMono/regular_italic.ttf
+          style: italic
+        - asset: assets/fonts/robotoMono/medium.ttf
+          weight: 500
+        - asset: assets/fonts/robotoMono/bold.ttf
+          weight: 700
+
+    - family: Lato
+      fonts:
+        - asset: assets/fonts/lato/bold.ttf
+          weight: 700
+        - asset: assets/fonts/lato/bold_italic.ttf
+          weight: 700
+          style: italic
