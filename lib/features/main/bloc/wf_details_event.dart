@@ -1,4 +1,6 @@
 part of 'wf_details_bloc.dart';
 
 @immutable
-sealed class WfDetailsEvent {}
+sealed class WFDetailsEvent {}
+
+class LoadWFDetailsEvent extends WFDetailsEvent {}
