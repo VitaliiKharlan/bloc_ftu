@@ -3,20 +3,20 @@ part of 'wf_details_bloc.dart';
 @immutable
 sealed class WFDetailsState {}
 
-final class WFDetailsInitial extends WFDetailsState {}
+final class WFDetailsInitialState extends WFDetailsState {}
 
-final class WFDetailsLoading extends WFDetailsState {}
+final class WFDetailsLoadingState extends WFDetailsState {}
 
-final class WFDetailsLoaded extends WFDetailsState {
-  WFDetailsLoaded({
+final class WFDetailsLoadedState extends WFDetailsState {
+  WFDetailsLoadedState({
     required this.wfDetails,
   });
 
   final WFDetails wfDetails;
 }
 
-final class WFDetailsLoadingFailure extends WFDetailsState {
-  WFDetailsLoadingFailure({
+final class WFDetailsLoadingFailureState extends WFDetailsState {
+  WFDetailsLoadingFailureState({
     this.exception,
   });
 

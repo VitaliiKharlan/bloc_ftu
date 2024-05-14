@@ -1,5 +1,7 @@
 import 'package:bloc_ftu/theme/app_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -7,6 +9,7 @@ import '../../../repositories/main/wf_details_repository.dart';
 import '../../../theme/app_text_style.dart';
 import '../../../theme/app_theme.dart';
 import '../bloc/wf_details_bloc.dart';
+import '../widgets/main_details_widget.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -35,6 +38,7 @@ class WeatherForecast extends StatefulWidget {
 class _WeatherForecastState extends State<WeatherForecast> {
   final _wfDetailsBloc = WFDetailsBloc(GetIt.instance<WFDetailsRepository>());
 
+
   @override
   void initState() {
     _wfDetailsBloc.add(LoadWFDetailsEvent());
@@ -46,7 +50,7 @@ class _WeatherForecastState extends State<WeatherForecast> {
     return BlocBuilder<WFDetailsBloc, WFDetailsState>(
       bloc: _wfDetailsBloc,
       builder: (context, state) {
-        if (state is WFDetailsLoaded) {
+        if (state is WFDetailsLoadedState) {
           return ListView(
             physics: const BouncingScrollPhysics(),
             children: [
@@ -86,10 +90,36 @@ class _WeatherForecastState extends State<WeatherForecast> {
                   ],
                 ),
               ),
+              const SizedBox(height: 400),
+              SizedBox(
+                height: 80,
+                // width: 200,
+                child: FittedBox(
+                  child: FloatingActionButton.extended(
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                        width: 4,
+                        color: Color(0xFF5B5F78),
+                      ),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainDetailsWidget(),
+                        ),
+                      );
+                    },
+                    label: const Text('DetailsWidget'),
+                  ),
+                ),
+              ),
             ],
           );
         }
-        if (state is WFDetailsLoadingFailure) {
+        if (state is WFDetailsLoadingFailureState) {
           // return Center(
           //     child: Text(state.exception?.toString() ?? 'Exception'));
           return Center(
@@ -101,12 +131,23 @@ class _WeatherForecastState extends State<WeatherForecast> {
                   'Something went wrong',
                   style: AppTextStyle.defaultBoldLargeTitle,
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 12),
                 Text(
                   'Please try again later',
                   style: AppTextStyle.defaultRegularTitle3.copyWith(
                       color: AppColors.linearWhiteParametersButtonShort2),
                 ),
+                const SizedBox(height: 40),
+                TextButton(
+                  onPressed: () {
+                    _wfDetailsBloc.add(LoadWFDetailsEvent());
+                  },
+                  child: Text(
+                    'Try again',
+                    style: AppTextStyle.defaultRegularTitle3
+                        .copyWith(color: AppColors.indicatorsWarningDark),
+                  ),
+                )
               ],
             ),
           );
