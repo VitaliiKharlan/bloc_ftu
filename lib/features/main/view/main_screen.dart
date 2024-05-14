@@ -1,10 +1,8 @@
-import 'package:bloc_ftu/theme/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../theme/app_colors.dart';
 import '../../../repositories/main/wf_details_repository.dart';
 import '../../../theme/app_text_style.dart';
 import '../../../theme/app_theme.dart';
@@ -20,9 +18,8 @@ class MainScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: darkTheme,
       home: const Scaffold(
-        body: Scaffold(
-          body: WeatherForecast(),
-        ),
+        backgroundColor: Color(0xFF2E335A),
+        body: WeatherForecast(),
       ),
     );
   }
@@ -37,7 +34,6 @@ class WeatherForecast extends StatefulWidget {
 
 class _WeatherForecastState extends State<WeatherForecast> {
   final _wfDetailsBloc = WFDetailsBloc(GetIt.instance<WFDetailsRepository>());
-
 
   @override
   void initState() {
@@ -60,12 +56,13 @@ class _WeatherForecastState extends State<WeatherForecast> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    const SizedBox(height: 20),
                     Text(
                       state.wfDetails.name,
                       style: AppTextStyle.defaultRegularLargeTitle
                           .copyWith(color: Colors.white),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 8),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -100,7 +97,7 @@ class _WeatherForecastState extends State<WeatherForecast> {
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(
                         width: 4,
-                        color: Color(0xFF5B5F78),
+                        color: Colors.blue,
                       ),
                       borderRadius: BorderRadius.circular(100),
                     ),
@@ -108,7 +105,7 @@ class _WeatherForecastState extends State<WeatherForecast> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MainDetailsWidget(),
+                          builder: (context) => const MainDetailsWidget(),
                         ),
                       );
                     },
